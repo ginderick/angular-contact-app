@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ContactService } from '../contact.service';
+import { Contact } from '../contacts';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,9 +10,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./contact-table.component.css'],
 })
 export class ContactTableComponent implements OnInit {
-  contacts!: Observable<{ name: string; email: string; contact: string }[]>;
+  contacts!: Observable<Contact[]>;
   dataSource = new MatTableDataSource<any>();
-  displayedColumns: string[] = ['name', 'email', 'contact', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'contact', 'actions'];
 
   constructor(private contactService: ContactService) {}
 
