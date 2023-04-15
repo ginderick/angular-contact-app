@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { RouterModule } from '@angular/router';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent],
+  declarations: [AppComponent, ContactComponent, ContactFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
