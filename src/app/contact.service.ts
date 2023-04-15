@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Contact } from './contacts';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +14,6 @@ export class ContactService {
   }
 
   getContacts() {
-    return this.http.get<{ name: string; email: string; contact: string }[]>(
-      '/assets/contact.json'
-    );
+    return this.http.get<Contact[]>('/assets/contact.json');
   }
 }
