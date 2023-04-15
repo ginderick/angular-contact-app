@@ -20,25 +20,10 @@ export class ContactTableComponent implements OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('ng OnChanges');
-    console.log(changes['contacts']);
     if (changes['contacts'] && changes['contacts'].currentValue) {
-      console.log('If statement');
-      console.log(this.contacts);
-      // this.dataSource.data = [
-      //   ...this.dataSource.data,
-      //   ...changes.contacts.currentValue,
-      // ];
       this.dataSource.data = changes['contacts'].currentValue;
     }
   }
-
-  // ngOnInit() {
-  //   this.contacts = this.contactService.getContacts();
-  //   this.contacts.subscribe((data) => {
-  //     this.dataSource.data = data;
-  //   });
-  // }
 
   doSomething() {
     console.log('Hello');
