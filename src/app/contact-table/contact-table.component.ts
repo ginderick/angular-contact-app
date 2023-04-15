@@ -18,7 +18,6 @@ export class ContactTableComponent implements OnInit {
 
   ngOnInit() {
     this.contacts = this.contactService.getContacts();
-    console.log(this.contacts);
     this.contacts.subscribe((data) => {
       this.dataSource.data = data;
     });
