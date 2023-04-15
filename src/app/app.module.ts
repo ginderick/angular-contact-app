@@ -15,11 +15,10 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ContactTableComponent } from './contact-table/contact-table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { environment } from '../environments/environment';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +29,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
