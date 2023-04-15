@@ -1,1 +1,20 @@
 <h1>Contact form component</h1>
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="email"> Email </label>
+    <input id="email" type="text" formControlName="email" />
+  </div>
+
+  <div>
+    <label for="contact"> Contact </label>
+    <input id="contact" type="text" formControlName="contact" />
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+</form>
