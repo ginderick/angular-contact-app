@@ -7,9 +7,15 @@ import { ContactComponent } from './contact/contact.component';
 import { RouterModule } from '@angular/router';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent, ContactFormComponent],
+  declarations: [
+    AppComponent,
+    TopBarComponent,
+    ContactComponent,
+    ContactFormComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
