@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Contact } from '../contacts';
 
@@ -7,13 +7,11 @@ import { Contact } from '../contacts';
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.css'],
 })
-export class ContactFormComponent implements OnInit {
-  contactForm!: FormGroup;
-  contact: any;
+export class ContactFormComponent {
+  contactForm: FormGroup;
+  @Output() formSubmit = new EventEmitter<Contact>();
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder) {
     this.contactForm = this.formBuilder.group({
       name: '',
       email: '',
@@ -22,8 +20,14 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.contact = this.contactForm.value;
-    console.log(this.contact);
+    const newContact: Contact = {
+      id: 4,
+      name: this.contactForm.value.name,
+      email: this.contactForm.value.email,
+      contact: this.contactForm.value.contact,
+    };
+    // const newContact = this.contactForm.value;
+    this.formSubmit.emit(newContact);
     this.contactForm.reset();
   }
 }
