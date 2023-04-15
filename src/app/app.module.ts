@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { ContactTableComponent } from './contact-table/contact-table.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     TopBarComponent,
     ContactComponent,
     ContactFormComponent,
+    ContactTableComponent,
   ],
   imports: [
     BrowserModule,
