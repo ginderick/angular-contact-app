@@ -8,6 +8,8 @@ import {
   DocumentData,
   collection,
   CollectionReference,
+  setDoc,
+  doc,
 } from '@angular/fire/firestore';
 
 @Injectable({
@@ -21,8 +23,12 @@ export class ContactService {
     this.contactsCollection = collection(this.firestore, 'contacts');
   }
 
-  addToContact(contact: Contact) {
-    this.contacts.push(contact);
+  upsertContact(contact: Contact) {
+    const contactsDocumentReference = doc(
+      this.firestore,
+      `contacts/${contact.id}`
+    );
+    return setDoc(contactsDocumentReference, { ...contact });
   }
 
   getContacts() {
