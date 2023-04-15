@@ -16,6 +16,10 @@ import { ContactTableComponent } from './contact-table/contact-table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactTableComponent,
   ],
   imports: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideDatabase(() => getDatabase()),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
