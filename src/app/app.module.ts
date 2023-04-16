@@ -21,6 +21,7 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { ContactViewComponent } from './contact-view/contact-view.component';
 import { ContactResolver } from './contact-resolver.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { ContactResolver } from './contact-resolver.service';
     ContactFormComponent,
     ContactTableComponent,
     ContactViewComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -51,6 +53,10 @@ import { ContactResolver } from './contact-resolver.service';
         path: 'contacts/:contactId',
         component: ContactViewComponent,
         resolve: { data: ContactResolver },
+      },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
       },
     ]),
   ],
