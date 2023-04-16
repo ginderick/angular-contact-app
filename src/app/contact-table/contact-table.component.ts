@@ -28,6 +28,10 @@ export class ContactTableComponent implements OnChanges {
     console.log('Hello');
   }
 
+  deleteContact(item: Contact) {
+    this.contactService.deleteContact(item);
+  }
+
   populateContactData(item: Contact) {
     this.contactService.setData(item);
   }

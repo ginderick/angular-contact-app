@@ -10,6 +10,7 @@ import {
   CollectionReference,
   setDoc,
   doc,
+  deleteDoc,
 } from '@angular/fire/firestore';
 
 @Injectable({
@@ -59,5 +60,14 @@ export class ContactService {
     return collectionData(this.contactsCollection, {
       idField: 'id',
     }) as Observable<Contact[]>;
+  }
+
+  deleteContact(contact: Contact) {
+    const contactsDocumentReference = doc(
+      this.firestore,
+      `contacts/${contact.id}`
+    );
+    deleteDoc(contactsDocumentReference);
+    return;
   }
 }
