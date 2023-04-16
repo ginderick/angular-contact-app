@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../contacts';
 import { ActivatedRoute } from '@angular/router';
+import { ContactService } from '../contact.service';
 
 @Component({
   selector: 'app-contact-view',
@@ -8,12 +9,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./contact-view.component.css'],
 })
 export class ContactViewComponent implements OnInit {
-  contact: Contact | undefined;
+  contact!: Contact;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private contactService: ContactService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     console.log(routeParams);
+    this.contactService.getData().subscribe((data) => {
+      this.contact = data;
+    });
   }
 }
