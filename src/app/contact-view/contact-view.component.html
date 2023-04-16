@@ -1,8 +1,11 @@
 <h1>Contact Details</h1>
 
-<div *ngIf="contact">
+<div *ngIf="contact; else noContactDetail">
   <h3>{{ contact.name }}</h3>
   <h3>{{ contact.email }}</h3>
   <h3>{{ contact.contact }}</h3>
 </div>
-<div>Contact detail not available</div>
+
+<ng-template #noContactDetail>
+  <div>No contact detail to display</div>
+</ng-template>
