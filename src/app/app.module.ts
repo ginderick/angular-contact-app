@@ -15,7 +15,10 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ContactTableComponent } from './contact-table/contact-table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
 
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactTableComponent,
   ],
   imports: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

@@ -10,14 +10,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./contact-table.component.css'],
 })
 export class ContactTableComponent implements OnChanges {
-  // contacts!: Observable<Contact[]>;
   @Input() contacts: Contact[] = [];
 
   dataSource = new MatTableDataSource<Contact>();
 
   displayedColumns: string[] = ['id', 'name', 'email', 'contact', 'actions'];
 
-  constructor() {}
+  constructor(private contactService: ContactService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['contacts'] && changes['contacts'].currentValue) {
@@ -27,5 +26,9 @@ export class ContactTableComponent implements OnChanges {
 
   doSomething() {
     console.log('Hello');
+  }
+
+  populateContactData(item: Contact) {
+    this.contactService.setData(item);
   }
 }

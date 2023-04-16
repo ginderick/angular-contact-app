@@ -1,19 +1,60 @@
 import { Injectable } from '@angular/core';
 import { Contact } from './contacts';
-import { HttpClient } from '@angular/common/http';
+
+import { BehaviorSubject, Observable } from 'rxjs';
+import {
+  collectionData,
+  Firestore,
+  DocumentData,
+  collection,
+  CollectionReference,
+  setDoc,
+  doc,
+} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactService {
   contacts: Contact[] = [];
-  constructor(private http: HttpClient) {}
 
-  addToContact(contact: Contact) {
-    this.contacts.push(contact);
+  private data = new BehaviorSubject<any>(null);
+
+  private contact: Contact | undefined;
+  private contactsCollection: CollectionReference<DocumentData>;
+
+  constructor(private firestore: Firestore) {
+    this.contactsCollection = collection(this.firestore, 'contacts');
+  }
+
+  setData(data: Contact) {
+    this.data.next(data);
+  }
+
+  getData() {
+    return this.data.asObservable();
+  }
+
+  upsertContact(contact: Contact) {
+    const contactsDocumentReference = doc(
+      this.firestore,
+      `contacts/${contact.id}`
+    );
+    return setDoc(contactsDocumentReference, { ...contact });
+  }
+
+  addContact(contact: Contact) {
+    contact.id = new Date().getTime().toString();
+    const contactsDocumentReference = doc(
+      this.firestore,
+      `contacts/${contact.id}`
+    );
+    return setDoc(contactsDocumentReference, { ...contact });
   }
 
   getContacts() {
-    return this.http.get<Contact[]>('/assets/contact.json');
+    return collectionData(this.contactsCollection, {
+      idField: 'id',
+    }) as Observable<Contact[]>;
   }
 }
