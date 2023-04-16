@@ -22,10 +22,6 @@ export class ContactTableComponent implements OnChanges {
     }
   }
 
-  viewContact(item: Contact) {
-    this.contactService.setData(item);
-  }
-
   deleteContact(item: Contact) {
     this.contactService.deleteContact(item);
   }
