@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Contact } from '../contacts';
 import { ContactService } from '../contact.service';
-import { of } from 'rxjs';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',

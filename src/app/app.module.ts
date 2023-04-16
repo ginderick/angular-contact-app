@@ -17,8 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { ContactViewComponent } from './contact-view/contact-view.component';
+import { ContactResolver } from './contact-resolver.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     ContactComponent,
     ContactFormComponent,
     ContactTableComponent,
+    ContactViewComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -38,8 +41,20 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    RouterModule.forRoot([{ path: '', component: ContactComponent }]),
+    RouterModule.forRoot([
+      { path: '', component: ContactComponent },
+      {
+        path: 'contacts',
+        component: ContactComponent,
+      },
+      {
+        path: 'contacts/:contactId',
+        component: ContactViewComponent,
+        resolve: { data: ContactResolver },
+      },
+    ]),
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

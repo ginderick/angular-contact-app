@@ -2,8 +2,6 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ContactService } from '../contact.service';
 import { Contact } from '../contacts';
-import { Observable } from 'rxjs';
-
 @Component({
   selector: 'app-contact-table',
   templateUrl: './contact-table.component.html',
@@ -22,10 +20,6 @@ export class ContactTableComponent implements OnChanges {
     if (changes['contacts'] && changes['contacts'].currentValue) {
       this.dataSource.data = changes['contacts'].currentValue;
     }
-  }
-
-  doSomething() {
-    console.log('Hello');
   }
 
   deleteContact(item: Contact) {
