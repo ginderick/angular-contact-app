@@ -11,6 +11,7 @@ import {
   setDoc,
   doc,
   deleteDoc,
+  getDoc,
 } from '@angular/fire/firestore';
 
 @Injectable({
@@ -54,6 +55,13 @@ export class ContactService {
       `contacts/${contact.id}`
     );
     return setDoc(contactsDocumentReference, { ...contact });
+  }
+
+  async getContact(id: string) {
+    const contactsDocumentReference = doc(this.firestore, `contacts/${id}`);
+    const contactSnap = await getDoc(contactsDocumentReference);
+    const contactData = contactSnap.data();
+    return contactData;
   }
 
   getContacts() {
