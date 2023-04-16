@@ -46,6 +46,7 @@ import { ContactViewComponent } from './contact-view/contact-view.component';
       { path: 'contacts/:contactId', component: ContactViewComponent },
     ]),
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })
