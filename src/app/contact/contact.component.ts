@@ -24,7 +24,7 @@ export class ContactComponent implements OnInit {
   }
 
   addContact(contact: Contact) {
-    this.contactService.addContact(contact);
+    this.contactService.upsertContact(contact);
     this.contacts.push(contact);
   }
 }
