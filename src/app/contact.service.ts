@@ -31,6 +31,15 @@ export class ContactService {
     return setDoc(contactsDocumentReference, { ...contact });
   }
 
+  addContact(contact: Contact) {
+    contact.id = new Date().getTime().toString();
+    const contactsDocumentReference = doc(
+      this.firestore,
+      `contacts/${contact.id}`
+    );
+    return setDoc(contactsDocumentReference, { ...contact });
+  }
+
   getContacts() {
     return collectionData(this.contactsCollection, {
       idField: 'id',

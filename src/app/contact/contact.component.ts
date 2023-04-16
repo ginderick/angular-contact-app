@@ -22,4 +22,9 @@ export class ContactComponent implements OnInit {
     this.contactService.upsertContact(contact);
     this.contacts.push(contact);
   }
+
+  addContact(contact: Contact) {
+    this.contactService.addContact(contact);
+    this.contacts.push(contact);
+  }
 }

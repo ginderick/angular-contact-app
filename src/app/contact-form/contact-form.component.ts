@@ -21,7 +21,7 @@ export class ContactFormComponent {
 
   onSubmit(): void {
     const newContact: Contact = {
-      id: 'lcu9DvqjxYGtmMyiPVTa',
+      id: '',
       name: this.contactForm.value.name,
       email: this.contactForm.value.email,
       contact: this.contactForm.value.contact,
