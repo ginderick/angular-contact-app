@@ -36,6 +36,9 @@ export class ContactService {
   }
 
   upsertContact(contact: Contact) {
+    if (!contact.id) {
+      contact.id = new Date().getTime().toString();
+    }
     const contactsDocumentReference = doc(
       this.firestore,
       `contacts/${contact.id}`
