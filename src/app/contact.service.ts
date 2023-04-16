@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Contact } from './contacts';
 
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {
   collectionData,
   Firestore,
@@ -17,10 +17,22 @@ import {
 })
 export class ContactService {
   contacts: Contact[] = [];
+
+  private data = new BehaviorSubject<any>(null);
+
+  private contact: Contact | undefined;
   private contactsCollection: CollectionReference<DocumentData>;
 
   constructor(private firestore: Firestore) {
     this.contactsCollection = collection(this.firestore, 'contacts');
+  }
+
+  setData(data: Contact) {
+    this.data.next(data);
+  }
+
+  getData() {
+    return this.data.asObservable();
   }
 
   upsertContact(contact: Contact) {

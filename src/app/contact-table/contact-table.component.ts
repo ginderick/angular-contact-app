@@ -16,7 +16,7 @@ export class ContactTableComponent implements OnChanges {
 
   displayedColumns: string[] = ['id', 'name', 'email', 'contact', 'actions'];
 
-  constructor() {}
+  constructor(private contactService: ContactService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['contacts'] && changes['contacts'].currentValue) {
@@ -29,6 +29,6 @@ export class ContactTableComponent implements OnChanges {
   }
 
   populateContactData(item: Contact) {
-    console.log('Clicked row:', item);
+    this.contactService.setData(item);
   }
 }
