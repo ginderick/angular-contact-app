@@ -9,7 +9,7 @@ import { ContactService } from '../contact.service';
   styleUrls: ['./contact-view.component.css'],
 })
 export class ContactViewComponent implements OnInit {
-  contact!: Contact;
+  contact: Contact | undefined;
 
   constructor(
     private contactService: ContactService,
@@ -17,10 +17,6 @@ export class ContactViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    console.log(routeParams);
-    this.contactService.getData().subscribe((data) => {
-      this.contact = data;
-    });
+    this.contact = this.route.snapshot.data['data'];
   }
 }

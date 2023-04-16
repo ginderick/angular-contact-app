@@ -1,5 +1,8 @@
 <h1>Contact Details</h1>
 
-<p>Name: {{ contact.name }}</p>
-<p>Email: {{ contact.email }}</p>
-<p>Contact: {{ contact.contact }}</p>
+<div *ngIf="contact">
+  <h3>{{ contact.name }}</h3>
+  <h3>{{ contact.email }}</h3>
+  <h3>{{ contact.contact }}</h3>
+</div>
+<div>Contact detail not available</div>
