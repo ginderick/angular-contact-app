@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { ContactViewComponent } from './contact-view/contact-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     ContactComponent,
     ContactFormComponent,
     ContactTableComponent,
+    ContactViewComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -38,7 +40,11 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    RouterModule.forRoot([{ path: '', component: ContactComponent }]),
+    RouterModule.forRoot([
+      { path: '', component: ContactComponent },
+      { path: 'contacts', component: ContactComponent },
+      { path: 'contacts/:contactId', component: ContactViewComponent },
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],
