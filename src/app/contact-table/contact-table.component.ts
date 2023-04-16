@@ -27,4 +27,8 @@ export class ContactTableComponent implements OnChanges {
   doSomething() {
     console.log('Hello');
   }
+
+  populateContactData(item: Contact) {
+    console.log('Clicked row:', item);
+  }
 }
