@@ -14,12 +14,12 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.contactService.getContacts().subscribe((data) => {
-      this.contacts = [...data, ...this.contacts];
+      this.contacts = data;
     });
   }
 
-  addItem(contact: Contact) {
+  upsertContact(contact: Contact) {
     this.contactService.upsertContact(contact);
-    this.contacts = [contact, ...this.contacts];
+    this.contacts.push(contact);
   }
 }
