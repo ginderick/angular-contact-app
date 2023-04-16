@@ -29,8 +29,6 @@ export class ContactFormComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    console.log('On init called in contact form');
-
     this.contactService.getData().subscribe((data) => {
       if (data) {
         this.contactForm = this.formBuilder.group({
@@ -39,22 +37,17 @@ export class ContactFormComponent implements OnInit {
           email: data.email,
           contact: data.contact,
         });
-        console.log(this.contactForm);
       }
     });
   }
 
   onSubmit(): void {
-    console.log(this.contactForm.value);
-
     // add new contact
     if (
       this.contactForm.value.name === '' &&
       this.contactForm.value.email === '' &&
       this.contactForm.value.contact === ''
     ) {
-      console.log('Hello blank contact form');
-
       const newContact: Contact = {
         id: '',
         name: this.contactForm.value.name,
