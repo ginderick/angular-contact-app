@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./contact-table.component.css'],
 })
 export class ContactTableComponent implements OnChanges {
-  // contacts!: Observable<Contact[]>;
   @Input() contacts: Contact[] = [];
 
   dataSource = new MatTableDataSource<Contact>();
