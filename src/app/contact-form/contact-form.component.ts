@@ -34,23 +34,47 @@ export class ContactFormComponent implements OnInit {
     this.contactService.getData().subscribe((data) => {
       if (data) {
         this.contactForm = this.formBuilder.group({
+          id: data.id,
           name: data.name,
           email: data.email,
           contact: data.contact,
         });
+        console.log(this.contactForm);
       }
     });
   }
 
   onSubmit(): void {
-    const newContact: Contact = {
-      id: '',
-      name: this.contactForm.value.name,
-      email: this.contactForm.value.email,
-      contact: this.contactForm.value.contact,
-    };
-    // const newContact = this.contactForm.value;
-    this.formSubmit.emit(newContact);
-    this.contactForm.reset();
+    console.log(this.contactForm.value);
+
+    // add new contact
+    if (
+      this.contactForm.value.name === '' &&
+      this.contactForm.value.email === '' &&
+      this.contactForm.value.contact === ''
+    ) {
+      console.log('Hello blank contact form');
+
+      const newContact: Contact = {
+        id: '',
+        name: this.contactForm.value.name,
+        email: this.contactForm.value.email,
+        contact: this.contactForm.value.contact,
+      };
+      this.formSubmit.emit(newContact);
+      this.contactForm.reset();
+    }
+
+    // update contact
+    else {
+      const updateContact: Contact = {
+        id: this.contactForm.value.id,
+        name: this.contactForm.value.name,
+        email: this.contactForm.value.email,
+        contact: this.contactForm.value.contact,
+      };
+      this.formSubmit.emit(updateContact);
+      this.contactForm.reset();
+    }
   }
 }
