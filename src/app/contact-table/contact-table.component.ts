@@ -28,5 +28,6 @@ export class ContactTableComponent implements OnChanges {
 
   populateContactData(item: Contact) {
     this.contactService.setData(item);
+    this.contactService.setIsUpdate(true);
   }
 }

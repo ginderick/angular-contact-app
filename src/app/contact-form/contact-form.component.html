@@ -4,6 +4,17 @@
   <div>
     <label for="name">Name</label>
     <input id="name" type="text" formControlName="name" />
+    <div
+      *ngIf="
+        contactForm.controls['name'].errors &&
+        (contactForm.controls['name'].dirty ||
+          contactForm.controls['name'].touched)
+      "
+    >
+      <div *ngIf="contactForm.controls['name'].errors['required']">
+        Name is required
+      </div>
+    </div>
   </div>
 
   <div>
@@ -16,5 +27,7 @@
     <input id="contact" type="text" formControlName="contact" />
   </div>
 
-  <button class="button" type="submit">Add/Update</button>
+  <button class="button" type="submit">
+    {{ isUpdate ? "Update" : "Add" }}
+  </button>
 </form>

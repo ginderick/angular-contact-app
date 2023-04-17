@@ -1,5 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Contact } from '../contacts';
 import { ContactService } from '../contact.service';
 
@@ -10,6 +15,7 @@ import { ContactService } from '../contact.service';
 })
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
+  isUpdate = false;
   data: Contact = {
     id: '',
     name: '',
@@ -23,9 +29,12 @@ export class ContactFormComponent implements OnInit {
     private contactService: ContactService
   ) {
     this.contactForm = this.formBuilder.group({
-      name: '',
-      email: '',
-      contact: '',
+      name: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      contact: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
     });
   }
   ngOnInit(): void {
@@ -39,10 +48,18 @@ export class ContactFormComponent implements OnInit {
         });
       }
     });
+
+    this.contactService.getIsUpdate().subscribe((data) => {
+      if (data) {
+        this.isUpdate = true;
+      }
+    });
   }
 
   onSubmit(): void {
     // add new contact
+    console.log(this.contactForm);
+
     if (
       this.contactForm.value.name === '' &&
       this.contactForm.value.email === '' &&
@@ -68,6 +85,7 @@ export class ContactFormComponent implements OnInit {
       };
       this.formSubmit.emit(updateContact);
       this.contactForm.reset();
+      this.isUpdate = false;
     }
   }
 }
