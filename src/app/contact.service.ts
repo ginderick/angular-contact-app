@@ -21,8 +21,8 @@ export class ContactService {
   contacts: Contact[] = [];
 
   private data = new BehaviorSubject<any>(null);
+  private isUpdate = new BehaviorSubject<any>(null);
 
-  private contact: Contact | undefined;
   private contactsCollection: CollectionReference<DocumentData>;
 
   constructor(private firestore: Firestore) {
@@ -35,6 +35,14 @@ export class ContactService {
 
   getData() {
     return this.data.asObservable();
+  }
+
+  setIsUpdate(isUpdate: boolean) {
+    this.isUpdate.next(isUpdate);
+  }
+
+  getIsUpdate() {
+    return this.isUpdate.asObservable();
   }
 
   upsertContact(contact: Contact) {

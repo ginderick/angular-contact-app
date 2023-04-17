@@ -10,6 +10,7 @@ import { ContactService } from '../contact.service';
 })
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
+  isUpdate = false;
   data: Contact = {
     id: '',
     name: '',
@@ -37,6 +38,12 @@ export class ContactFormComponent implements OnInit {
           email: data.email,
           contact: data.contact,
         });
+      }
+    });
+
+    this.contactService.getIsUpdate().subscribe((data) => {
+      if (data) {
+        this.isUpdate = true;
       }
     });
   }
@@ -68,6 +75,7 @@ export class ContactFormComponent implements OnInit {
       };
       this.formSubmit.emit(updateContact);
       this.contactForm.reset();
+      this.isUpdate = false;
     }
   }
 }

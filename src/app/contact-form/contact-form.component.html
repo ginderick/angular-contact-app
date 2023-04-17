@@ -16,5 +16,7 @@
     <input id="contact" type="text" formControlName="contact" />
   </div>
 
-  <button class="button" type="submit">Add/Update</button>
+  <button class="button" type="submit">
+    {{ isUpdate ? "Update" : "Add" }}
+  </button>
 </form>
