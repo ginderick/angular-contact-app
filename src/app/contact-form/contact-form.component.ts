@@ -33,7 +33,7 @@ export class ContactFormComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       contact: new FormControl(null, [
         Validators.required,
-        Validators.minLength(9), Validators.pattern(/^[1-9]+[0-9]*$/)
+        Validators.pattern('^[0-9]{11}$'),
       ]),
     });
   }
@@ -42,9 +42,15 @@ export class ContactFormComponent implements OnInit {
       if (data) {
         this.contactForm = this.formBuilder.group({
           id: data.id,
-          name: data.name,
-          email: data.email,
-          contact: data.contact,
+          name: new FormControl(data.name, Validators.required),
+          email: new FormControl(data.email, [
+            Validators.required,
+            Validators.email,
+          ]),
+          contact: new FormControl(data.contact, [
+            Validators.required,
+            Validators.pattern('^[0-9]{11}$'),
+          ]),
         });
       }
     });
@@ -59,7 +65,6 @@ export class ContactFormComponent implements OnInit {
   onSubmit(): void {
     // add new contact
     console.log(this.contactForm);
-    
 
     const updateContact: Contact = {
       id: this.contactForm.value.id,
@@ -71,33 +76,32 @@ export class ContactFormComponent implements OnInit {
     this.contactForm.reset();
 
     this.isUpdate = false;
-
-    // if (
-    //   this.contactForm.value.name === '' &&
-    //   this.contactForm.value.email === '' &&
-    //   this.contactForm.value.contact === ''
-    // ) {
-    //   const newContact: Contact = {
-    //     id: '',
-    //     name: this.contactForm.value.name,
-    //     email: this.contactForm.value.email,
-    //     contact: this.contactForm.value.contact,
-    //   };
-    //   this.formSubmit.emit(newContact);
-    //   this.contactForm.reset();
-    // }
-
-    // // update contact
-    // else {
-    //   const updateContact: Contact = {
-    //     id: this.contactForm.value.id,
-    //     name: this.contactForm.value.name,
-    //     email: this.contactForm.value.email,
-    //     contact: this.contactForm.value.contact,
-    //   };
-    //   this.formSubmit.emit(updateContact);
-    //   this.contactForm.reset();
-    //   this.isUpdate = false;
-    // }
   }
+  // if (
+  //   this.contactForm.value.name === '' &&
+  //   this.contactForm.value.email === '' &&
+  //   this.contactForm.value.contact === ''
+  // ) {
+  //   const newContact: Contact = {
+  //     id: '',
+  //     name: this.contactForm.value.name,
+  //     email: this.contactForm.value.email,
+  //     contact: this.contactForm.value.contact,
+  //   };
+  //   this.formSubmit.emit(newContact);
+  //   this.contactForm.reset();
+  // }
+
+  // // update contact
+  // else {
+  //   const updateContact: Contact = {
+  //     id: this.contactForm.value.id,
+  //     name: this.contactForm.value.name,
+  //     email: this.contactForm.value.email,
+  //     contact: this.contactForm.value.contact,
+  //   };
+  //   this.formSubmit.emit(updateContact);
+  //   this.contactForm.reset();
+  //   this.isUpdate = false;
+  // }
 }

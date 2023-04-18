@@ -5,6 +5,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Name</mat-label>
       <input
+        name="myInput"
         type="text"
         matInput
         formControlName="name"
@@ -28,10 +29,11 @@
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
       <input
+        name="myInput"
         type="email"
         matInput
         formControlName="email"
-        placeholder="Ex. pat@example.com"
+        placeholder="Ex. test@example.com"
       /><mat-icon matSuffix>email</mat-icon>
       <mat-error
         *ngIf="
@@ -52,10 +54,11 @@
       <mat-label>Contact</mat-label>
       <span matPrefix>+63 &nbsp;</span>
       <input
+        name="myInput"
         type="tel"
         matInput
         formControlName="contact"
-        placeholder="9XXX-XXXX-XXX"
+        placeholder="9XXXXXXXXXX"
       /><mat-icon matSuffix>phone</mat-icon>
       <mat-error
         *ngIf="
@@ -71,7 +74,7 @@
     </mat-form-field>
   </div>
 
-  <button class="button" type="submit">
+  <button class="btn btn-success" type="submit" [disabled]="!contactForm.valid">
     {{ isUpdate ? "Update" : "Add" }}
   </button>
 </form>
