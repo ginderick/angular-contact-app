@@ -22,6 +22,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { ContactViewComponent } from './contact-view/contact-view.component';
 import { ContactResolver } from './contact-resolver.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatInputModule,
     RouterModule.forRoot([
       { path: '', component: ContactComponent },
       {
