@@ -33,7 +33,7 @@ export class ContactFormComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       contact: new FormControl(null, [
         Validators.required,
-        Validators.minLength(3),
+        Validators.minLength(9), Validators.pattern(/^[1-9]+[0-9]*$/)
       ]),
     });
   }
@@ -59,33 +59,45 @@ export class ContactFormComponent implements OnInit {
   onSubmit(): void {
     // add new contact
     console.log(this.contactForm);
+    
 
-    if (
-      this.contactForm.value.name === '' &&
-      this.contactForm.value.email === '' &&
-      this.contactForm.value.contact === ''
-    ) {
-      const newContact: Contact = {
-        id: '',
-        name: this.contactForm.value.name,
-        email: this.contactForm.value.email,
-        contact: this.contactForm.value.contact,
-      };
-      this.formSubmit.emit(newContact);
-      this.contactForm.reset();
-    }
+    const updateContact: Contact = {
+      id: this.contactForm.value.id,
+      name: this.contactForm.value.name,
+      email: this.contactForm.value.email,
+      contact: this.contactForm.value.contact,
+    };
+    this.formSubmit.emit(updateContact);
+    this.contactForm.reset();
 
-    // update contact
-    else {
-      const updateContact: Contact = {
-        id: this.contactForm.value.id,
-        name: this.contactForm.value.name,
-        email: this.contactForm.value.email,
-        contact: this.contactForm.value.contact,
-      };
-      this.formSubmit.emit(updateContact);
-      this.contactForm.reset();
-      this.isUpdate = false;
-    }
+    this.isUpdate = false;
+
+    // if (
+    //   this.contactForm.value.name === '' &&
+    //   this.contactForm.value.email === '' &&
+    //   this.contactForm.value.contact === ''
+    // ) {
+    //   const newContact: Contact = {
+    //     id: '',
+    //     name: this.contactForm.value.name,
+    //     email: this.contactForm.value.email,
+    //     contact: this.contactForm.value.contact,
+    //   };
+    //   this.formSubmit.emit(newContact);
+    //   this.contactForm.reset();
+    // }
+
+    // // update contact
+    // else {
+    //   const updateContact: Contact = {
+    //     id: this.contactForm.value.id,
+    //     name: this.contactForm.value.name,
+    //     email: this.contactForm.value.email,
+    //     contact: this.contactForm.value.contact,
+    //   };
+    //   this.formSubmit.emit(updateContact);
+    //   this.contactForm.reset();
+    //   this.isUpdate = false;
+    // }
   }
 }
