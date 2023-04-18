@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { ContactViewComponent } from './contact-view/contact-view.component';
 import { ContactResolver } from './contact-resolver.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatInputModule,
+    MatIconModule,
     RouterModule.forRoot([
       { path: '', component: ContactComponent },
       {
