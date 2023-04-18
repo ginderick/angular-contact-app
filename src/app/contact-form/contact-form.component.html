@@ -1,7 +1,7 @@
 <h1>Contact Details</h1>
 
 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-  <div>
+  <div style="margin-bottom: 25px">
     <mat-form-field class="example-full-width">
       <mat-label>Name</mat-label>
       <input
@@ -9,7 +9,7 @@
         type="text"
         matInput
         formControlName="name"
-        placeholder="James Bond"
+        placeholder="Ex. James Bond"
       /><mat-icon matSuffix>person</mat-icon>
       <mat-error
         *ngIf="
@@ -25,7 +25,7 @@
     </mat-form-field>
   </div>
 
-  <div>
+  <div style="margin-bottom: 25px">
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
       <input
@@ -49,16 +49,15 @@
     </mat-form-field>
   </div>
 
-  <div>
+  <div style="margin-bottom: 10px">
     <mat-form-field class="example-full-width">
       <mat-label>Contact</mat-label>
-      <span matPrefix>+63 &nbsp;</span>
       <input
         name="myInput"
         type="tel"
         matInput
         formControlName="contact"
-        placeholder="9XXXXXXXXXX"
+        placeholder="Ex. 09123456789"
       /><mat-icon matSuffix>phone</mat-icon>
       <mat-error
         *ngIf="
@@ -73,8 +72,15 @@
       </mat-error>
     </mat-form-field>
   </div>
-
-  <button class="btn btn-success" type="submit" [disabled]="!contactForm.valid">
-    {{ isUpdate ? "Update" : "Add" }}
-  </button>
+  <div class="button-row">
+    <button
+      mat-raised-button
+      type="button"
+      (click)="onSubmit()"
+      [disabled]="!contactForm.valid"
+      aria-label="add or update button"
+    >
+      {{ isUpdate ? "Update" : "Add" }}
+    </button>
+  </div>
 </form>
