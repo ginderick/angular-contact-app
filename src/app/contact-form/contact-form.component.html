@@ -74,12 +74,13 @@
     </mat-form-field>
   </div>
   <div class="button-row">
-    <button mat-raised-button type="submit" [disabled]="!contactForm.valid">
+    <button
+      mat-raised-button
+      type="button"
+      (clickg)="onSubmit()"
+      [disabled]="!contactForm.valid"
+    >
       {{ isUpdate ? "Update" : "Add" }}
     </button>
   </div>
-
-  <!-- <button class="btn btn-success" type="submit" [disabled]="!contactForm.valid">
-    {{ isUpdate ? "Update" : "Add" }}
-  </button> -->
 </form>
