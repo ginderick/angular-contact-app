@@ -5,10 +5,15 @@
 }
 
 .example-full-width {
-  width: 100%;
+  width: 30%;
 }
 
 .button-row {
   display: table-cell;
   max-width: 600px;
+}
+
+
+.form-container {
+  margin-left: 20px;
 }

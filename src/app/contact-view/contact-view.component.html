@@ -1,5 +1,5 @@
-<div style="align-content: center">
-  <mat-card class="view-card" *ngIf="contact; else noContactDetail">
+<div class="card-container">
+  <mat-card *ngIf="contact; else noContactDetail">
     <mat-card-header>
       <mat-card-title class="contact-view-title">{{
         contact.name
@@ -13,10 +13,11 @@
     </mat-card-content>
   </mat-card>
 </div>
-
-<button (click)="goBack()">
+<button class="button" (click)="goBack()">
   <span class="material-symbols-outlined"> arrow_back </span>Back
 </button>
+
+<div class="card-container"></div>
 <ng-template #noContactDetail>
   <div>No contact details to display</div>
 </ng-template>

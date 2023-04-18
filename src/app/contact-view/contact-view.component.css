@@ -14,6 +14,23 @@
   font-size: 25px;
 } */
 
-.main-div {
-  align-content: center;
+
+.card-container {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.button{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card {
+  width: 350px;
+  height: 350px;
+  /* Optional: Add additional styles to adjust the spacing and positioning */
 }
