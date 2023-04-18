@@ -1,15 +1,15 @@
 <div class="card-container">
   <mat-card *ngIf="contact; else noContactDetail">
     <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
       <mat-card-title class="contact-view-title">{{
         contact.name
       }}</mat-card-title>
-      <mat-card-subtitle>{{ contact.id }}</mat-card-subtitle>
+      <mat-card-subtitle>Id: {{ contact.id }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>Email: {{ contact.email }}</p>
-      <p>Contact: {{ contact.contact }}</p>
-      <p>test</p>
+      <p class="contact-view-text">Email: {{ contact.email }}</p>
+      <p class="contact-view-text">Contact: {{ contact.contact }}</p>
     </mat-card-content>
   </mat-card>
 </div>
