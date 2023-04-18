@@ -5,6 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +48,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSortModule,
     MatInputModule,
     MatIconModule,
+    MatButtonModule,
     RouterModule.forRoot([
       { path: '', component: ContactComponent },
       {
