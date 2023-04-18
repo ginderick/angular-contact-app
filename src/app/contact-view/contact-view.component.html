@@ -1,12 +1,22 @@
-<div class="personal-details" *ngIf="contact; else noContactDetail">
-  <h2>Contact Details</h2>
-  <h3>ID : {{ contact.id }}</h3>
-  <h3>Name : {{ contact.name }}</h3>
-  <h3>Email : {{ contact.email }}</h3>
-  <h3>Contact Number : {{ contact.contact }}</h3>
+<div style="align-content: center">
+  <mat-card class="view-card" *ngIf="contact; else noContactDetail">
+    <mat-card-header>
+      <mat-card-title class="contact-view-title">{{
+        contact.name
+      }}</mat-card-title>
+      <mat-card-subtitle>{{ contact.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Email: {{ contact.email }}</p>
+      <p>Contact: {{ contact.contact }}</p>
+      <p>test</p>
+    </mat-card-content>
+  </mat-card>
 </div>
-<button (click)="goBack()"><span class="material-symbols-outlined"> arrow_back </span>Back</button>
 
+<button (click)="goBack()">
+  <span class="material-symbols-outlined"> arrow_back </span>Back
+</button>
 <ng-template #noContactDetail>
   <div>No contact details to display</div>
 </ng-template>

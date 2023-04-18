@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,9 @@ import { ContactViewComponent } from './contact-view/contact-view.component';
 import { ContactResolver } from './contact-resolver.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,9 @@ import { MatInputModule } from '@angular/material/input';
     BrowserAnimationsModule,
     HttpClientModule,
     MatTableModule,
+    MatCardModule,
     MatPaginatorModule,
+    MatGridListModule,
     MatSortModule,
     MatInputModule,
     MatIconModule,

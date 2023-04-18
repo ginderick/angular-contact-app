@@ -9,7 +9,7 @@
         type="text"
         matInput
         formControlName="name"
-        placeholder="James Bond"
+        placeholder="Ex. James Bond"
       /><mat-icon matSuffix>person</mat-icon>
       <mat-error
         *ngIf="
@@ -57,7 +57,7 @@
         type="tel"
         matInput
         formControlName="contact"
-        placeholder="09123456789"
+        placeholder="Ex. 09123456789"
       /><mat-icon matSuffix>phone</mat-icon>
       <mat-error
         *ngIf="
@@ -78,6 +78,7 @@
       type="button"
       (click)="onSubmit()"
       [disabled]="!contactForm.valid"
+      aria-label="add or update button"
     >
       {{ isUpdate ? "Update" : "Add" }}
     </button>
