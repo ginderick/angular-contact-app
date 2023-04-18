@@ -77,31 +77,4 @@ export class ContactFormComponent implements OnInit {
 
     this.isUpdate = false;
   }
-  // if (
-  //   this.contactForm.value.name === '' &&
-  //   this.contactForm.value.email === '' &&
-  //   this.contactForm.value.contact === ''
-  // ) {
-  //   const newContact: Contact = {
-  //     id: '',
-  //     name: this.contactForm.value.name,
-  //     email: this.contactForm.value.email,
-  //     contact: this.contactForm.value.contact,
-  //   };
-  //   this.formSubmit.emit(newContact);
-  //   this.contactForm.reset();
-  // }
-
-  // // update contact
-  // else {
-  //   const updateContact: Contact = {
-  //     id: this.contactForm.value.id,
-  //     name: this.contactForm.value.name,
-  //     email: this.contactForm.value.email,
-  //     contact: this.contactForm.value.contact,
-  //   };
-  //   this.formSubmit.emit(updateContact);
-  //   this.contactForm.reset();
-  //   this.isUpdate = false;
-  // }
 }
